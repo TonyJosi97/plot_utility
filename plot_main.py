@@ -146,12 +146,18 @@ class Ui_MainWindow(object):
         self.plotter_Window.show()
 
     def clear_TextData_X(self):
-        pass
+        self.PlainT_data_X.clear()
 
     def clear_TextData_Y(self):
-        pass
+        self.PlainT_data_Y.clear()
 
     def plot_DataY(self):
+
+        # Take data from IP
+        ip_Data_X = self.PlainT_data_X.toPlainText()
+        print(type(ip_Data_X))
+
+        # show plot window
         self.plotter_Window.show()
 
     def plot_DataXY(self):
