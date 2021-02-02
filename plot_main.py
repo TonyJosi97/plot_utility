@@ -154,14 +154,32 @@ class Ui_MainWindow(object):
     def plot_DataY(self):
 
         # Take data from IP
-        ip_Data_X = self.PlainT_data_X.toPlainText()
-        print(type(ip_Data_X))
+        raw_ip_Data_X = self.PlainT_data_X.toPlainText()
+        proc_IP_Data_X = self.preProcess_IP_Data(raw_ip_Data_X)
+        print(proc_IP_Data_X)
 
         # show plot window
         self.plotter_Window.show()
 
     def plot_DataXY(self):
         self.plotter_Window.show()
+
+    ######################################################
+                    # Utility Code #
+    ###################################################### 
+
+    def preProcess_IP_Data(self, raw_Data):
+        op_Proc_Data = []
+        try:
+            str_Data_Lines = raw_Data.splitlines()
+            for rdata in str_Data_Lines:
+                if rdata == "":
+                    continue
+                else:
+                    op_Proc_Data.append(float(rdata))
+        except Exception as e:
+            _LOGGER__("Error parsing IP Data" + e)
+        return op_Proc_Data
 
 if __name__ == "__main__":
 
