@@ -11,6 +11,10 @@ import pyqtgraph as pg
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+CURVE_1_COLOR = '#ff0000'
+CURVE_2_COLOR = '#0000ff'
+CURVE_3_COLOR = '#00ffff'
+CURVE_4_COLOR = '#ff00ff'
 
 class Ui_Plot_Window(object):
     def setupUi(self, Plot_Window):
@@ -23,15 +27,46 @@ class Ui_Plot_Window(object):
 
         # 1st Yaxis
         self.graphicsView_YAxis_1 = self.graphicsView.getAxis('left')
-        self.graphicsView_YAxis_1.setPen(pg.mkPen(color='#ff0000', width=3))
+        self.graphicsView.plotItem.layout.addItem(self.graphicsView_YAxis_1, 2, 0)
+        self.graphicsView_YAxis_1.setPen(pg.mkPen(color = CURVE_1_COLOR, width = 3))
 
         # 2nd Yaxis
         self.graphicsView_YAxis_2_VBox = pg.ViewBox()
-        self.graphicsView_YAxis_2 = pg.AxisItem('left')
-        self.graphicsView.plotItem.layout.addItem(self.graphicsView_YAxis_2, -1, -3)
+        self.graphicsView_YAxis_2_VBox.enableAutoRange()
+        self.graphicsView_YAxis_2 = pg.AxisItem('right')
+        self.graphicsView.plotItem.layout.addItem(self.graphicsView_YAxis_2, 2, 3)
         self.graphicsView.scene().addItem(self.graphicsView_YAxis_2_VBox)
         self.graphicsView_YAxis_2.linkToView(self.graphicsView_YAxis_2_VBox)
-        self.graphicsView_YAxis_2.setPen(pg.mkPen(color='#0000ff', width=3))
+        self.graphicsView_YAxis_2.setPen(pg.mkPen(color = CURVE_2_COLOR, width = 3))
+
+        # 3rd Yaxis
+        self.graphicsView_YAxis_3_VBox = pg.ViewBox()
+        self.graphicsView_YAxis_3_VBox.enableAutoRange()
+        self.graphicsView_YAxis_3 = pg.AxisItem('right')
+        self.graphicsView.plotItem.layout.addItem(self.graphicsView_YAxis_3, 2, 4)
+        self.graphicsView.scene().addItem(self.graphicsView_YAxis_3_VBox)
+        self.graphicsView_YAxis_3.linkToView(self.graphicsView_YAxis_3_VBox)
+        self.graphicsView_YAxis_3.setPen(pg.mkPen(color = CURVE_3_COLOR, width = 3))
+
+        # 4th Yaxis
+        self.graphicsView_YAxis_4_VBox = pg.ViewBox()
+        self.graphicsView_YAxis_4_VBox.enableAutoRange()
+        self.graphicsView_YAxis_4 = pg.AxisItem('right')
+        self.graphicsView.plotItem.layout.addItem(self.graphicsView_YAxis_4, 2, 5)
+        self.graphicsView.scene().addItem(self.graphicsView_YAxis_4_VBox)
+        self.graphicsView_YAxis_4.linkToView(self.graphicsView_YAxis_4_VBox)
+        self.graphicsView_YAxis_4.setPen(pg.mkPen(color = CURVE_4_COLOR, width=3))
+
+        # Curves
+        self.curve_1 = self.graphicsView.plot(pen=pg.mkPen(color = CURVE_1_COLOR, width = 3))
+        self.curve_2 = self.graphicsView.plot(pen=pg.mkPen(color = CURVE_2_COLOR, width = 3))
+        self.curve_3 = self.graphicsView.plot(pen=pg.mkPen(color = CURVE_3_COLOR, width = 3))
+        self.curve_4 = self.graphicsView.plot(pen=pg.mkPen(color = CURVE_4_COLOR, width = 3))
+
+        # Connect curves to graph
+        self.graphicsView_YAxis_2_VBox.addItem(self.curve_2)
+        self.graphicsView_YAxis_3_VBox.addItem(self.curve_3)
+        self.graphicsView_YAxis_4_VBox.addItem(self.curve_4)
 
         self.label = QtWidgets.QLabel(Plot_Window)
         self.label.setGeometry(QtCore.QRect(510, 10, 221, 41))

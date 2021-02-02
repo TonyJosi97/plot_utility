@@ -157,6 +157,13 @@ class Ui_MainWindow(object):
         raw_ip_Data_X = self.PlainT_data_X.toPlainText()
         proc_IP_Data_X = self.preProcess_IP_Data(raw_ip_Data_X)
         print(proc_IP_Data_X)
+        self.plot_UI_Obj.curve_1.setData(proc_IP_Data_X)
+        new_list_1 = [i * 3.12 for i in proc_IP_Data_X]
+        new_list_2 = [i * 2.82 for i in proc_IP_Data_X]
+        new_list_3 = [i * 7.92 for i in proc_IP_Data_X]
+        self.plot_UI_Obj.curve_2.setData(new_list_1)
+        self.plot_UI_Obj.curve_3.setData(new_list_2)
+        self.plot_UI_Obj.curve_4.setData(new_list_3)
 
         # show plot window
         self.plotter_Window.show()
