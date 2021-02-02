@@ -25,7 +25,7 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="Label_MainHeader">
        <property name="font">
         <font>
          <family>Staatliches</family>
@@ -42,7 +42,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="PushB_plot_Y">
     <property name="geometry">
      <rect>
       <x>400</x>
@@ -53,15 +53,15 @@
     </property>
     <property name="font">
      <font>
-      <family>Roboto</family>
+      <family>Roboto Medium</family>
       <pointsize>9</pointsize>
      </font>
     </property>
     <property name="text">
-     <string>Plot X</string>
+     <string>Plot Y</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="PushB_clear_Y">
     <property name="geometry">
      <rect>
       <x>600</x>
@@ -95,7 +95,7 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QTextEdit" name="textEdit">
+    <widget class="QTextEdit" name="PlainT_data_X">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -105,7 +105,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QTextEdit" name="textEdit_2">
+    <widget class="QTextEdit" name="PlainT_data_Y">
      <property name="geometry">
       <rect>
        <x>330</x>
@@ -116,7 +116,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="PushB_plot_FromFile">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -127,7 +127,7 @@
     </property>
     <property name="font">
      <font>
-      <family>Roboto</family>
+      <family>Roboto Medium</family>
       <pointsize>9</pointsize>
       <weight>50</weight>
       <bold>false</bold>
@@ -137,7 +137,7 @@
      <string>Plot Data File</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="PushB_clear_X">
     <property name="geometry">
      <rect>
       <x>270</x>
@@ -156,7 +156,7 @@
      <string>Clear</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="PushB_plot_XY">
     <property name="geometry">
      <rect>
       <x>490</x>
@@ -167,7 +167,7 @@
     </property>
     <property name="font">
      <font>
-      <family>Roboto</family>
+      <family>Roboto Medium</family>
       <pointsize>9</pointsize>
      </font>
     </property>
