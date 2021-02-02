@@ -19,6 +19,20 @@ class Ui_Plot_Window(object):
         self.graphicsView = pg.PlotWidget(Plot_Window)
         self.graphicsView.setGeometry(QtCore.QRect(10, 70, 1231, 541))
         self.graphicsView.setObjectName("graphicsView")
+        self.graphicsView.enableAutoRange()
+
+        # 1st Yaxis
+        self.graphicsView_YAxis_1 = self.graphicsView.getAxis('left')
+        self.graphicsView_YAxis_1.setPen(pg.mkPen(color='#ff0000', width=3))
+
+        # 2nd Yaxis
+        self.graphicsView_YAxis_2_VBox = pg.ViewBox()
+        self.graphicsView_YAxis_2 = pg.AxisItem('left')
+        self.graphicsView.plotItem.layout.addItem(self.graphicsView_YAxis_2, -1, -3)
+        self.graphicsView.scene().addItem(self.graphicsView_YAxis_2_VBox)
+        self.graphicsView_YAxis_2.linkToView(self.graphicsView_YAxis_2_VBox)
+        self.graphicsView_YAxis_2.setPen(pg.mkPen(color='#0000ff', width=3))
+
         self.label = QtWidgets.QLabel(Plot_Window)
         self.label.setGeometry(QtCore.QRect(510, 10, 221, 41))
         self.label.setObjectName("label")
@@ -33,3 +47,8 @@ class Ui_Plot_Window(object):
 
     def connect_Controls(self):
         pass
+
+    ######################################################
+                    # New Code #
+    ###################################################### 
+
