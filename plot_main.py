@@ -11,6 +11,8 @@ import sys
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from plot_app import Ui_Plot_Window
+
 def _LOGGER__(str__, type__ = ""):
     print("LOG:" + type__ + " " + str__)
 
@@ -103,6 +105,9 @@ class Ui_MainWindow(object):
 
         ## Plot widget object
         self.plotter_Window = QtWidgets.QWidget()
+        self.plot_UI_Obj = Ui_Plot_Window()
+        self.plot_UI_Obj.setupUi(self.plotter_Window)
+        self.plot_UI_Obj.connect_Controls()
 
         ## File Explorer dialog box
         self.file_Explorer_Window =  QtWidgets.QFileDialog()
@@ -138,6 +143,8 @@ class Ui_MainWindow(object):
             _LOGGER__("File open error" + e)
             pass
 
+        self.plotter_Window.show()
+
     def clear_TextData_X(self):
         pass
 
@@ -145,10 +152,10 @@ class Ui_MainWindow(object):
         pass
 
     def plot_DataY(self):
-        pass
+        self.plotter_Window.show()
 
     def plot_DataXY(self):
-        pass        
+        self.plotter_Window.show()
 
 if __name__ == "__main__":
 
