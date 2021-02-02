@@ -11,6 +11,9 @@ import sys
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+def _LOGGER__(str__, type__ = ""):
+    print("LOG:" + type__ + " " + str__)
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -94,6 +97,17 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+        ######################################################
+                        # New Code #
+        ###################################################### 
+
+        ## Plot widget object
+        self.plotter_Window = QtWidgets.QWidget()
+
+        ## File Explorer dialog box
+        self.file_Explorer_Window =  QtWidgets.QFileDialog()
+
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -104,6 +118,11 @@ class Ui_MainWindow(object):
         self.PushB_clear_X.setText(_translate("MainWindow", "Clear"))
         self.PushB_plot_XY.setText(_translate("MainWindow", "Plot XY"))
 
+
+    ######################################################
+                    # New Code #
+    ###################################################### 
+
     def connect_Controls(self):
         self.PushB_plot_FromFile.clicked.connect(self.read_DataFromFile_Handler)
         self.PushB_clear_X.clicked.connect(self.clear_TextData_X)
@@ -112,7 +131,12 @@ class Ui_MainWindow(object):
         self.PushB_plot_XY.clicked.connect(self.plot_DataXY)
 
     def read_DataFromFile_Handler(self):
-        pass
+        try:
+            data_file_path = self.file_Explorer_Window.getOpenFileName()
+            print(data_file_path)
+        except Exception as e:
+            _LOGGER__("File open error" + e)
+            pass
 
     def clear_TextData_X(self):
         pass
