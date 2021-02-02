@@ -104,11 +104,35 @@ class Ui_MainWindow(object):
         self.PushB_clear_X.setText(_translate("MainWindow", "Clear"))
         self.PushB_plot_XY.setText(_translate("MainWindow", "Plot XY"))
 
+    def connect_Controls(self):
+        self.PushB_plot_FromFile.clicked.connect(self.read_DataFromFile_Handler)
+        self.PushB_clear_X.clicked.connect(self.PushB_clear_X)
+        self.PushB_clear_Y.clicked.connect(self.PushB_clear_Y)
+        self.PushB_plot_Y.clicked.connect(self.plot_DataY)
+        self.PushB_plot_XY.clicked.connect(self.plot_DataXY)
+
+    def read_DataFromFile_Handler(self):
+        print("pass")
+
+    def clear_TextData_X(self):
+        print("pass")
+
+    def clear_TextData_Y(self):
+        print("pass")
+
+    def plot_DataY(self):
+        print("pass")
+
+    def plot_DataXY(self):
+        print("pass")
+        
+
 if __name__ == "__main__":
 
     app = QtWidgets.QApplication(sys.argv)
     main_window = QtWidgets.QMainWindow()
     m_ui = Ui_MainWindow()
+    m_ui.connect_Controls()
     m_ui.setupUi(main_window)
     main_window.show()
     sys.exit(app.exec_())
