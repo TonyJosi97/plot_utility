@@ -197,3 +197,4 @@ if __name__ == "__main__":
     m_ui.connect_Controls()
     main_window.show()
     sys.exit(app.exec_())
+
